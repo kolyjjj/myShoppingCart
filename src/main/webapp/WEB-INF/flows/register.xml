@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.3.xsd">
+
+
+    <!-- By default, the first state is the start state. -->
+    <view-state id="register" view="account/registerForm">
+        <transition on="submitRegistration" to="accountAdded"/>
+        <transition on="cancelRegistration" to="cancelRegistration"/>
+    </view-state>
+
+    <end-state id="accountAdded"
+               view="externalRedirect:contextRelative:/home.do"/>
+    <end-state id="cancelRegistration"
+               view="externalRedirect:contextRelative:/home.do"/>
+
+</beans>
