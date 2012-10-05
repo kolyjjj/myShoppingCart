@@ -29,6 +29,7 @@
             <value>
                 /register.do=flowController
                 /home.do=flowController
+                /login.do=flowController
             </value>
         </property>
         <property name="alwaysUseFullPath" value="true"/>
