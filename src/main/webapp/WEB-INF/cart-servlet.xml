@@ -15,8 +15,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="li.koly"/>
 
-    <bean id="viewResolver" class=
-            "org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
@@ -24,16 +23,6 @@
     <bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
         <property name="flowExecutor" ref="flowExecutor" />
     </bean>
-
-    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <value>
-                /account/register.do=flowController
-            </value>
-        </property>
-        <property name="alwaysUseFullPath" value="true"/>
-    </bean>
-
 
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
         <property name="flowRegistry" ref="flowRegistry"/>
@@ -43,12 +32,9 @@
     <webflow:flow-executor id="flowExecutor" flow-registry="flowRegistry">
     </webflow:flow-executor>
 
-    <!--<webflow:flow-registry id="flowRegistry">-->
-        <!--<webflow:flow-location id="homeView" path="/WEB-INF/flows/mailViewFlow.xml" />-->
-    <!--</webflow:flow-registry>-->
-
     <webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
-        <webflow:flow-location path="/WEB-INF/flows/register.xml"/>
+        <webflow:flow-location  path="/WEB-INF/flows/register.xml"/>
+        <webflow:flow-location  path="/WEB-INF/flows/home.xml"/>
     </webflow:flow-registry>
 
     <webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="viewFactoryCreator"/>
